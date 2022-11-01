@@ -25,17 +25,17 @@
 		scanf("%d",&novo->idade);
 		novo->prox = NULL;
 		
-		if(p->ini == NULL){ //adiciona no início, pois não há nada inserido
+		if(p->ini == NULL){ //adiciona no inÃ­cio, pois nÃ£o hÃ¡ nada inserido
 			p->ini = novo;
 			p->fim = novo;
 		}
-		else if(novo->idade>=65){ //insere com prioridade (se idade >= 65)
-			if(p->ini->idade<65){ //prioridade inserido no início da fila
+		else if(novo->idade>=IDADE_PRIORITARIA){ //insere com prioridade (se idade >= 65)
+			if(p->ini->idade<IDADE_PRIORITARIA){ //prioridade inserido no inÃ­cio da fila
 				novo->prox = p->ini;
 				p->ini = novo;
 			}
 			else{ //prioridade vai para o fim das prioridades
-				while(aux->prox && aux->prox->idade>=65)
+				while(aux->prox && aux->prox->idade>=IDADE_PRIORITARIA)
 					aux = aux->prox;	
 				novo->prox = aux->prox;
 				aux->prox = novo;
@@ -72,7 +72,7 @@
 			printf("\n%s (%d anos)",aux->nome,aux->idade);
 	}
 	
-int main(int argc, char *argv[]) { //Se pessoa tiver idade >=65 anos, será adicionada ao início da fila | Se já houver idosos na fila, último cadastro vai para fim das prioridades
+int main(int argc, char *argv[]) { //Se pessoa tiver idade >=65 anos, serÃ¡ adicionada ao inÃ­cio da fila | Se jÃ¡ houver idosos na fila, Ãºltimo cadastro vai para fim das prioridades
 	int opt=0;
 	Pessoa *p = (Pessoa *) malloc(sizeof(Pessoa));
 	p->ini = NULL;
